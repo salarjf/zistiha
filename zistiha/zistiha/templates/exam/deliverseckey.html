@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{%block content%}
+<p>‌آزمون‌های ثبت نام شده:</p>
+{%for order in orders%}
+	<p>{{order.exam.title}} <span>––{{order.name}}</span><span>---{{order.seckey}}</span></p>
+{%endfor%}
+{%endblock%}

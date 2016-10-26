@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%block content%}
+	<p> شما باید حد اقل یکی از این آزمونارو بخرید</p>
+	<form id="salam" action="/order/exam/enroll" method="post">
+		{% csrf_token %}
+		<ul>
+			{% for exam in exams%}
+				<li>{{exam.title}}:<input type="checkbox" name="exam" value="{{exam.id}}"/><br/></li>
+			{% endfor %}
+		</ul>		
+		<label>نام:<input type="text" name="name" required></label>
+		<label>نام خوانوادگی:<input type="text" name="last_name" required></label>
+		<label>شماره تماس:<input type="text" name="phone_number" required></label><br>
+		<label>نوع دبیرستان:<input type="text" name="school_type" required></label>
+		<label>نام دبیرستان:<input type="text" name="school_name" required></label><br>
+		<label>شهر:<input type="text" name="city" required></label>
+		<label>استان:<input type="text" name="provinence" required></label><br>
+		<input type="submit" value="تایید">
+	</form>
+
+{%endblock%}

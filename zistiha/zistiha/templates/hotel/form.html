@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{%block content%}
+	<h1>  ثبت‌نام هتل {{course.title}}</h1>
+	<form class="form-inline dynamic-generated" id="salam" action="/order/hotel/reserve" method="post">
+		{% csrf_token %}
+		<input type="hidden" name="course_id" value="{{course.id}}">
+		<label>نام:<input type="text" name="name" required></label>
+		<label>نام خوانوادگی:<input type="text" name="last_name" required></label>
+		<label>شماره شناسنامه:<input type="text" name="sid" required></label><br>
+		<label>شماره تماس:<input type="text" name="phone_number" required></label>
+		<label>شماره تماس والدین:<input type="text" name="parent_phone" required></label>
+		<label>شماره تماس منزل:<input type="text" name="home_phone" required></label><br>
+		<label>شهر:<input type="text" name="city" required></label>
+		<label>استان:<input type="text" name="provinence" required></label>
+	</form>
+
+	<div class="col-md-12">
+		<input class="btn btn-default" type="submit" form="salam" value="ورود به درگاه خرید">
+		<button class="btn btn-default" onclick="addmember()"> ‌افزودن فرد</button>
+	</div>
+	<script type="text/javascript">
+		function addmember() {
+				$('form').prepend('		<br>	<div class="col-md-12 devider"><br><label>نام:<input type="text" name="name" required></label>\
+		<label>نام خوانوادگی:<input type="text" name="last_name" required></label>\
+		<label>شماره شناسنامه:<input type="text" name="sid" required></label><br>\
+		<label>شماره تماس:<input type="text" name="phone_number" required></label>\
+		<label>شماره تماس والدین:<input type="text" name="parent_phone" required></label>\
+		<label>شماره تماس منزل:<input type="text" name="home_phone" required></label><br>\
+		<label>شهر:<input type="text" name="city" required></label>\
+		<label>استان:<input type="text" name="provinence" required></label>\
+	  ')
+		}
+	</script>
+{%endblock%}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{%block content%}
+<div class="col-lg-12 exam">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2>آزمون {{order.exam.title}}</h2>
+            <hr class="star-primary">
+        </div>
+    </div>
+	<div class="col-md-9" id="pdf"></div>
+	<h2 class="text-center">پاسخنامه</h2>
+	<div class="col-md-3 answers">
+	<form id="exam" action="/submit-exam/" method="post">
+		<input type="hidden" name="seckey" value="{{seckey}}">
+		{% csrf_token %}
+		{%for question in questions%}
+		<div class="row">
+		<div class="q-title col-md-4">سوال-{{question}}</div>
+			<div class="col-md-8">
+				<input type="radio" name="q{{question}}" value="1"> 1
+				<input type="radio" name="q{{question}}" value="2"> 2
+				<input type="radio" name="q{{question}}" value="3"> 3
+				<input type="radio" name="q{{question}}" value="4"> 4	
+			</div>
+		</div>
+		{%endfor%}
+	</form>
+	</div>
+</div>
+<div class="col-md-12 dynamic-footer">
+	<div class="col-md-6 dynamic-timer">
+		
+	</div>
+	<div class="col-md-6 dynamic-submit">
+		<button onclick="submit();" type="submit" class="btn btn-default" for="exam"> ثبت پاسخنامه</button>
+	</div>
+</div>
+
+<script src="/js/pdfobject.js"></script>
+<script>
+	var url = '/exams/{{order.exam.link}}';
+	PDFObject.embed(url, "#pdf");
+	function submit() {
+		 $( "#exam" ).submit();
+	}
+	var SessionTime={{time}};
+	var tickDuration=1000;
+	var myInterval=setInterval(function(){
+	    SessionTime=SessionTime-tickDuration
+	$(".dynamic-timer").text(time_format(SessionTime));
+	},1000);
+	var myTimeOut=setTimeout(SessionExpireEvent,SessionTime);
+	function SessionExpireEvent()
+	{ 
+		submit();
+	}
+	function time_format(input){
+		to_minute=input/60000;
+		minute=parseInt(to_minute);
+		second=parseInt((to_minute-minute)*60)
+		return second.toString()+" : "+minute.toString()
+	}
+</script>
+<!-- <script type="text/javascript" src="/js/pdf-render.js"></script> -->
+
+{%endblock%}

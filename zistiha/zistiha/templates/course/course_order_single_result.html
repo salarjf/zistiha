@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{%block content%}
+	{% csrf_token %}
+	<p>name={{name}},last_name={{last_name}},phone_number={{phone_number}},parent_phone={{parent_phone}},school_name={{school_name}},school_type={{school_type}},city={{city}},provinence={{provinence}},payment_type={{payment_type}},course={{course}}</p>
+{%endblock%}

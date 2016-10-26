@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{%block content%}
+	<table class="table-bordered" id="table">
+    <thead>
+      <tr>
+        <th class="col-md-1">نام</th>
+        <th class="col-md-1">نا‌م‌خانوادگی</th>
+        <th class="col-md-2">کد شرکت در آزمون</th>
+        <th class="col-md-1">شماره تماس</th>
+        <th class="col-md-2">نوع دبیرستان</th>
+        <th class="col-md-2">نام دبیرستان</th>
+        <th class="col-md-1">شهر</th>
+        <th class="col-md-1">استان</th>
+        <th class="col-md-1">آزمون</th>
+      </tr>
+    </thead>
+    <tbody>
+
+		{% for order in orders%}
+		<tr>
+		<td>{{order.name}}</td>
+		<td>{{order.last_name}}</td>
+		<td>{{order.seckey}}</td>
+		<td>{{order.phone_number}}</td>
+		<td>{{order.school_type}}</td>
+		<td>{{order.school_name}}</td>
+		<td>{{order.city}}</td>
+		<td>{{order.provinence}}</td>
+		<td>{{order.exam.title}}</td>
+		</tr>
+		{%endfor%}
+    </tbody>
+  </table>
+  <button id="download">دانلود pdf</button>
+
+{%endblock%}

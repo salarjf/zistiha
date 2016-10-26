@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{%block content%}
+<p>‌تاییدیه ثبت نام:</p>
+{%for item in selected%}
+	<p>{{item.title}}</p>
+{%endfor%}
+<p>total cost: {{totalCost}}</p>
+<form action="/order/exam/payExam" method="post">{% csrf_token %}
+	<input type="submit" value="ورود به مرحله خرید">
+</form>
+{%endblock%}

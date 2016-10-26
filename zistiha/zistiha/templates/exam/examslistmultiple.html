@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{%block content%}
+	<h1>  ثبت‌نام گروهی آزمون {{title}}</h1>
+	<form class="form-inline dynamic-generated" id="salam" action="/order/exam/enrollmultiple" method="post">
+		{% csrf_token %}
+
+		<ul>
+			{% for exam in exams%}
+				<li>{{exam.title}}:<input form="salam" type="checkbox" name="exam" value="{{exam.id}}"/><br/></li>
+			{% endfor %}
+		</ul>
+		<label>نام:<input type="text" name="name" required></label>
+		<label>نام خوانوادگی:<input type="text" name="last_name" required></label>
+		<label>شماره تماس:<input type="text" name="phone_number" required></label><br>
+		<label>نوع دبیرستان:<input type="text" name="school_type" required></label>
+		<label>نام دبیرستان:<input type="text" name="school_name" required></label><br>
+		<label>شهر:<input type="text" name="city" required></label>
+		<label>استان:<input type="text" name="provinence" required></label><br>
+	</form>
+
+	<div class="col-md-12">
+		<input class="btn btn-default" type="submit" form="salam" value="ورود به درگاه خرید">
+		<button class="btn btn-default" onclick="addmember()"> ‌افزودن فرد</button>
+	</div>
+	<script type="text/javascript">
+		function addmember() {
+				$('form').append('<div class="col-md-12 devider"></div>\
+					<label>نام:<input type="text" name="name" required></label>\
+		<label>نام خوانوادگی:<input type="text" name="last_name" required></label>\
+		<label>شماره تماس:<input type="text" name="phone_number" required></label><br>\
+		<label>نوع دبیرستان:<input type="text" name="school_type" required></label>\
+		<label>نام دبیرستان:<input type="text" name="school_name" required></label><br>\
+		<label>شهر:<input type="text" name="city" required></label>\
+		<label>استان:<input type="text" name="provinence" required></label><br>\
+		<br>\
+	  ')
+		}
+	</script>
+{%endblock%}
