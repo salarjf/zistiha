@@ -34,13 +34,13 @@ The main goal of website is to hold exams for students from different locations 
   - Indexing of data entities in database
  
   
-* Security
+* <b>Security</b>
   - Encoding JavaScript to avoid browser manipulations during exam 
   - DDOS attack
   - HTTPS connection was not feasible by the company constraints so a simple handshaking protocole developed in order to reasurance of connection
   
-* Timing  
-* Payment Gateway
+* <b> Timing </b>  
+* <b> Payment Gateway </b>
 
 
 
