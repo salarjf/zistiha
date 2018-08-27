@@ -1,14 +1,6 @@
 
 
 
-> Written with [StackEdit](https://stackedit.io/).
-<h1 align="center">
-  <br>
-  <a href="Zistiha.ir"><img src="http://zistiha.ir/img/logo.png" alt="Zistiha.Ir" width="200"></a>
-  <br>
-  Zistiha
-  <br>
-</h1>
 
 <h4 align="center">Django Implementation of Online Exam Center for Students</h4>
 
